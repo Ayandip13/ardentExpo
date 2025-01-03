@@ -1,26 +1,36 @@
 import React, { useState } from "react";
-import { Button, View, Text } from "react-native";
+import { Button, View, Text, StyleSheet } from "react-native";
 
 const Index = () => {
   const [data, setData] = useState(false);
 
   return (
     <View>
-      {/* Button (Always Visible) */}
-      <Button title="Click" onPress={() => setData(true)} />
+      <Button style={styles.button} title="Click" onPress={() => setData(true)} />
 
-      {/* Conditional Rendering for Texts */}
       {data ? (
-        <View>
-          <Text>Batman</Text>
-          <Text>Joker</Text>
-          <Text>Riddler</Text>
-          <Text>Dollmaker</Text>
-          <Text>Bane</Text>
+        <View style={{paddingTop:20}}>
+          <Text style={styles.textStyle}>Batman</Text>
+          <Text style={styles.textStyle}>Joker</Text>
+          <Text style={styles.textStyle}>Riddler</Text>
+          <Text style={styles.textStyle}>Dollmaker</Text>
+          <Text style={styles.textStyle}>Bane</Text>
         </View>
       ): <Text></Text>}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  button:{
+    backgroundColor:"black",
+    color:"black",
+  },
+  textStyle:{
+    fontWeight:"500",
+    textAlign:"center",
+    fontSize:30,
+  }
+})
 
 export default Index;
