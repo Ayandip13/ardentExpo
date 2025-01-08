@@ -5,15 +5,40 @@ const Index = () => {
   return (
     <>
       <View style={styles.header}>
-        <Text style={styles.headerTextStyle}>Ayandip paul</Text>
-        <Text style={styles.circle}></Text>
+        <Text style={styles.headerTextStyle}>Ayandip Paul</Text>
+        <View style={styles.circle}></View>
       </View>
       <View style={styles.footer}>
-        <View><Text style={styles.textStyle1}>React Native</Text><Text style={{backgroundColor:'blue'}}>300 rupees</Text></View>
-        <View><Text style={styles.textStyle2}>React js</Text><Text style={{backgroundColor:'blue'}}>300 rupees</Text></View>
-        <View><Text style={styles.textStyle3}>Android Development</Text><Text style={{backgroundColor:'blue'}}>300 rupees</Text></View>
-        <View><Text style={styles.textStyle4}>Node js Backend</Text><Text style={{backgroundColor:'blue'}}>300 rupees</Text></View>
-        <View><Text style={styles.textStyle5}>Swift Developer</Text><Text style={{backgroundColor:'blue'}}>300 rupees</Text></View>
+        <View style={styles.courseContainer}>
+          <Text style={styles.textStyle}>React Native</Text>
+          <View style={styles.priceCircle}>
+            <Text style={styles.priceText}>300</Text>
+          </View>
+        </View>
+        <View style={styles.courseContainer}>
+          <Text style={styles.textStyle}>React JS</Text>
+          <View style={styles.priceCircle}>
+            <Text style={styles.priceText}>300</Text>
+          </View>
+        </View>
+        <View style={styles.courseContainer}>
+          <Text style={styles.textStyle}>Android Development</Text>
+          <View style={styles.priceCircle}>
+            <Text style={styles.priceText}>300</Text>
+          </View>
+        </View>
+        <View style={styles.courseContainer}>
+          <Text style={styles.textStyle}>Node JS Backend</Text>
+          <View style={styles.priceCircle}>
+            <Text style={styles.priceText}>300</Text>
+          </View>
+        </View>
+        <View style={styles.courseContainer}>
+          <Text style={styles.textStyle}>Swift Developer</Text>
+          <View style={styles.priceCircle}>
+            <Text style={styles.priceText}>300</Text>
+          </View>
+        </View>
       </View>
     </>
   );
@@ -47,10 +72,8 @@ const styles = StyleSheet.create({
     elevation: 20,
   },
   footer: {
-    height: 600,
     justifyContent: "center",
     alignItems: "center",
-    textAlign:"left",
     gap: 20,
     backgroundColor: "white",
     elevation: 10,
@@ -61,45 +84,30 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderRadius: 10,
   },
-  textStyle1: {
-    fontSize: 20,
+  courseContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "90%",
     borderColor: "gray",
     borderWidth: 1,
-    paddingVertical: 30,
-    paddingHorizontal:101,
-    borderRadius:5
+    borderRadius: 5,
+    padding: 15,
   },
-  textStyle2: {
-    borderRadius:5,
-    fontSize: 20,
-    borderColor: "gray",
-    borderWidth: 1,
-    paddingVertical: 30,
-    paddingHorizontal:120
+  textStyle: {
+    fontSize: 18,
   },
-  textStyle3: {
-    borderRadius:5,
-    fontSize: 20,
-    borderColor: "gray",
-    borderWidth: 1,
-    paddingVertical: 30,
-    paddingHorizontal:70
+  priceCircle: {
+    backgroundColor: "blue",
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  textStyle4: {
-    borderRadius:5,
-    fontSize: 20,
-    borderColor: "gray",
-    borderWidth: 1,
-    paddingVertical: 30,
-    paddingHorizontal:90
-  },
-  textStyle5: {
-    borderRadius:5,
-    fontSize: 20,
-    borderColor: "gray",
-    borderWidth: 1,
-    paddingVertical: 30,
-    paddingHorizontal:92
+  priceText: {
+    color: "white",
+    fontSize: 14,
   },
 });
 
