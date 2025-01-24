@@ -1,44 +1,43 @@
-import { View, Text, StyleSheet } from "react-native";
 import React from "react";
+import { View, Text, StyleSheet, Image, FlatList } from "react-native";
 
 const Index = () => {
+  // Array of courses with name and price
+  const courses = [
+    { id: "1", name: "React Native", price: "$90" },
+    { id: "2", name: "Advanced JavaScript", price: "$50" },
+    { id: "3", name: "UI/UX Design", price: "$40" },
+    { id: "4", name: "Python for Beginners", price: "$40" },
+    { id: "5", name: "React js", price: "70$" },
+    { id: "6", name: "Angular js", price: "60$" },
+    { id: "7", name: "Vue js", price: "60$" },
+    { id: "8", name: "Django", price: "65$" },
+    { id: "9", name: "Cryptography", price: "65$" },
+    { id: "10", name: "Backend tools", price: "100$" },
+  ];
+
+  const renderItems = ({ item }) => (
+    <View style={styles.card}>
+      <Text style={styles.courseName}>{item.name}</Text>
+      <Text style={styles.coursePrice}>{item.price}</Text>
+    </View>
+  );
+
   return (
     <>
       <View style={styles.header}>
-        <Text style={styles.headerTextStyle}>Ayandip Paul</Text>
-        <View style={styles.circle}></View>
+        <Text style={styles.headerText}>Ayandip Paul</Text>
+        <Image
+          style={styles.headerImage}
+          source={{ uri: "https://via.placeholder.com/50" }}
+        />
       </View>
       <View style={styles.footer}>
-        <View style={styles.courseContainer}>
-          <Text style={styles.textStyle}>React Native</Text>
-          <View style={styles.priceCircle}>
-            <Text style={styles.priceText}>300</Text>
-          </View>
-        </View>
-        <View style={styles.courseContainer}>
-          <Text style={styles.textStyle}>React JS</Text>
-          <View style={styles.priceCircle}>
-            <Text style={styles.priceText}>300</Text>
-          </View>
-        </View>
-        <View style={styles.courseContainer}>
-          <Text style={styles.textStyle}>Android Development</Text>
-          <View style={styles.priceCircle}>
-            <Text style={styles.priceText}>300</Text>
-          </View>
-        </View>
-        <View style={styles.courseContainer}>
-          <Text style={styles.textStyle}>Node JS Backend</Text>
-          <View style={styles.priceCircle}>
-            <Text style={styles.priceText}>300</Text>
-          </View>
-        </View>
-        <View style={styles.courseContainer}>
-          <Text style={styles.textStyle}>Swift Developer</Text>
-          <View style={styles.priceCircle}>
-            <Text style={styles.priceText}>300</Text>
-          </View>
-        </View>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={courses}
+          renderItem={renderItems}
+        />
       </View>
     </>
   );
@@ -46,68 +45,45 @@ const Index = () => {
 
 const styles = StyleSheet.create({
   header: {
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 100,
-    backgroundColor: "white",
-    elevation: 10,
-    padding: 15,
-    flexDirection: "row",
-    marginTop: 1,
-    marginHorizontal: 3,
-    borderColor: "white",
-    borderRadius: 10,
-  },
-  headerTextStyle: {
-    fontSize: 30,
-  },
-  circle: {
-    backgroundColor: "red",
-    height: 60,
-    width: 60,
-    borderColor: "black",
-    borderWidth: 1,
-    borderRadius: 50,
-    marginRight: 25,
-    elevation: 20,
-  },
-  footer: {
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 20,
-    backgroundColor: "white",
-    elevation: 10,
-    padding: 15,
-    flexDirection: "column",
-    marginTop: 9,
-    marginHorizontal: 3,
-    borderColor: "white",
-    borderRadius: 10,
-  },
-  courseContainer: {
+    height: 100,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    width: "90%",
-    borderColor: "gray",
-    borderWidth: 1,
-    borderRadius: 5,
+    paddingHorizontal: 20,
+    backgroundColor: "#EAE2C6",
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  headerImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  footer: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: "#F5F5F5",
+  },
+  card: {
+    backgroundColor: "#FFF",
     padding: 15,
+    marginVertical: 10,
+    borderRadius: 10,
+    elevation: 3,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
   },
-  textStyle: {
+  courseName: {
     fontSize: 18,
+    fontWeight: "600",
+    marginBottom: 5,
   },
-  priceCircle: {
-    backgroundColor: "blue",
-    height: 40,
-    width: 40,
-    borderRadius: 20,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  priceText: {
-    color: "white",
-    fontSize: 14,
+  coursePrice: {
+    fontSize: 16,
+    color: "#555",
   },
 });
 
