@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "src/Prop.jsx", "app/(tabs)/Index.jsx"  ]
+, "src/Prop.jsx", "app/Index.jsx"  ]
 }
