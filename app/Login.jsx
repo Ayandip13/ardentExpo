@@ -1,4 +1,4 @@
-import { Linking, StyleSheet, Text, TextInput, View } from "react-native";
+import { Linking, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { Picker } from "@react-native-picker/picker";
 import { StatusBar } from "expo-status-bar";
@@ -6,7 +6,8 @@ import Button from "../components/Button";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 const Login = () => {
-    const [passwordVisible, setPasswordVisible] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
   return (
     <View style={{ flex: 1, backgroundColor: "#F2F9FF" }}>
@@ -76,53 +77,59 @@ const Login = () => {
 
       <View style={{ marginTop: 20, marginLeft: 19, flexDirection: "row" }}>
         <Text style={{ marginRight: 127 }}>Password</Text>
-        <Text>Confirm New Password</Text>
+        <Text>Confirm Password</Text>
       </View>
 
-      <View style={{ flexDirection: "row", marginTop: 2 }}>
-        <Icon
-          name={password ? "eye" : "eye-slash"}
-          onPress={() => setPassword(!password)}
-          size={15}
-          color="gray"
-          style={{ left: 155, top: 15 }}
-        />
-        <TextInput
-          style={{
-            borderWidth: 0.5,
-            borderColor: "#000",
-            marginLeft: -1,
-            // marginRight: 10,
-            marginTop: 7,
-            borderRadius: 5,
-            textAlign: "center",
-            width: 165,
-          }}
-          onChangeText={(e)=>setPasswordVisible(e)}
-          placeholder="Enter password"
-          secureTextEntry={!passwordVisible}
+      <View style={{ flexDirection: "row", marginTop: 2, marginLeft: 10 }}>
+        {/* Password Field */}
+        <View style={{ position: "relative" }}>
+          <TextInput
+            style={{
+              borderWidth: 0.5,
+              borderColor: "#000",
+              marginLeft: -1,
+              marginTop: 7,
+              borderRadius: 5,
+              textAlign: "center",
+              width: 165,
+              paddingRight: 30,
+            }}
+            placeholder="Enter password"
+            secureTextEntry={!passwordVisible}
           />
-        <Icon
-          name="eye"
-          onPress={() => setPasswordVisible((prev) => !prev)}
-          size={15}
-          color="gray"
-          style={{ left: 155, top: 15 }}
-        />
-        <TextInput
-          style={{
-            borderWidth: 0.5,
-            borderColor: "#000",
-            marginLeft: -1,
-            // marginRight: 10,
-            marginTop: 7,
-            borderRadius: 5,
-            textAlign: "center",
-            width: 165,
-          }}
-          placeholder="Re-Enter password"
-          secureTextEntry={password}
-        />
+          <Icon
+            name={passwordVisible ? "eye" : "eye-slash"}
+            onPress={() => setPasswordVisible(!passwordVisible)}
+            size={15}
+            color="gray"
+            style={{ position: "absolute", right: 10, top: 18 }}
+          />
+        </View>
+
+        {/* Confirm Password Field */}
+        <View style={{ position: "relative", marginLeft: 10 }}>
+          <TextInput
+            style={{
+              borderWidth: 0.5,
+              borderColor: "#000",
+              marginLeft: -1,
+              marginTop: 7,
+              borderRadius: 5,
+              textAlign: "center",
+              width: 165,
+              paddingRight: 30,
+            }}
+            placeholder="Re-enter password"
+            secureTextEntry={!confirmPasswordVisible}
+          />
+          <Icon
+            name={confirmPasswordVisible ? "eye" : "eye-slash"}
+            onPress={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
+            size={15}
+            color="gray"
+            style={{ position: "absolute", right: 10, top: 18 }}
+          />
+        </View>
       </View>
 
       <View style={{ marginLeft: 17, marginTop: 20, flexDirection: "row" }}>
@@ -141,15 +148,7 @@ const Login = () => {
             borderRadius: 8,
           }}
         >
-          <Picker
-            //   onValueChange={(itemValue) => setSelectedCar(itemValue)}
-            style={{
-              width: 170,
-              borderColor: "#000",
-              borderWidth: 2,
-              overflow: "hidden",
-            }}
-          >
+          <Picker style={{ width: 170 }}>
             <Picker.Item label="States" value="null" />
             <Picker.Item label="West Bengal" value="west Bengal" />
             <Picker.Item label="Maharastra" value="maharastra" />
@@ -225,5 +224,3 @@ const Login = () => {
 };
 
 export default Login;
-
-const styles = StyleSheet.create({});
