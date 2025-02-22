@@ -9,6 +9,29 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
+  const statesArr = ["West Bengal", "Manipur"];
+
+  const citiesArr = [
+    {
+      city1: "Kolkata",
+      city2: "Darjeeling",
+      city3: "New Jalpaiguri",
+      city4: "Mursidabad",
+      city4: "Bardwan",
+      city5: "Birbhum",
+      city5: "Malda",
+      city6: "North 24 pargana",
+      city7: "South 24 pargana",
+      city8: "East Midnapur",
+      city9: "West Midnapur",
+      city10: "Bankura",
+      city11: "Hawrah",
+      city12: "North Dinajpur",
+      city13: "South Dinajpur",
+      city14: "Nadia",
+    },
+  ];
+
   return (
     <View style={{ flex: 1, backgroundColor: "#F2F9FF" }}>
       <StatusBar backgroundColor="#F2F9FF" style="dark" />
@@ -150,13 +173,8 @@ const Login = () => {
         >
           <Picker style={{ width: 170 }}>
             <Picker.Item label="States" value="null" />
-            <Picker.Item label="West Bengal" value="west Bengal" />
-            <Picker.Item label="Maharastra" value="maharastra" />
-            <Picker.Item label="Gujrat" value="gujrat" />
-            <Picker.Item label="Kashmir" value="kashmir" />
-            <Picker.Item label="Kerala" value="kerala" />
-            <Picker.Item label="Manipur" value="manipur" />
-            <Picker.Item label="Tamilnadu" value="tamilnadu" />
+            <Picker.Item label={statesArr[0]} value="west Bengal" />
+            <Picker.Item label={statesArr[1]} value="maharastra" />
           </Picker>
         </View>
 
@@ -172,8 +190,8 @@ const Login = () => {
         >
           <Picker style={{ width: 170 }}>
             <Picker.Item label="City" value="null" />
-            <Picker.Item label="Kolkata" value="kolkata" />
-            <Picker.Item label="Mursidabad" value="mursidabad" />
+            <Picker.Item label="" value="kolkata" />
+            <Picker.Item label="" value="mursidabad" />
             <Picker.Item label="Bardawan" value="bardawan" />
             <Picker.Item label="Darjiling" value="darjiling" />
             <Picker.Item label="Bankura" value="bankura" />
