@@ -1,7 +1,26 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 
 const Index = ({ navigation }) => {
+  const [activity, setActivity] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setActivity(false);
+      navigation.navigate("Home");
+    }, 3000);
+    setActivity(true);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <View>
       <View style={styles.container}>
@@ -30,13 +49,14 @@ const Index = ({ navigation }) => {
           </View>
         </View>
         <View style={styles.footer}>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("Page2")}
             activeOpacity={0.7}
           >
             <Text style={styles.buttonColor}>Get Started</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          {activity && <ActivityIndicator size={30} style={{marginTop:20}} />}
           <Text style={styles.loginText}>
             Already a User.{" "}
             <Text
@@ -45,7 +65,7 @@ const Index = ({ navigation }) => {
                 fontWeight: "800",
                 textDecorationLine: "underline",
               }}
-              onPress={()=>navigation.navigate('Login')}
+              onPress={() => navigation.navigate("Login")}
             >
               Log in
             </Text>
@@ -76,7 +96,6 @@ const styles = StyleSheet.create({
   },
   descriptionText: {
     fontSize: 18,
-
     textAlign: "center",
     opacity: 0.5,
   },

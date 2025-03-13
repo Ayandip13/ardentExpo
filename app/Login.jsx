@@ -1,4 +1,4 @@
-import { Linking, Text, TextInput, View } from "react-native";
+import { Linking, ScrollView, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { Picker } from "@react-native-picker/picker";
 import { StatusBar } from "expo-status-bar";
@@ -9,114 +9,88 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
-  const statesArr = ["West Bengal", "Manipur"];
-
-  const citiesArr = [
-    {
-      city1: "Kolkata",
-      city2: "Darjeeling",
-      city3: "New Jalpaiguri",
-      city4: "Mursidabad",
-      city4: "Bardwan",
-      city5: "Birbhum",
-      city5: "Malda",
-      city6: "North 24 pargana",
-      city7: "South 24 pargana",
-      city8: "East Midnapur",
-      city9: "West Midnapur",
-      city10: "Bankura",
-      city11: "Hawrah",
-      city12: "North Dinajpur",
-      city13: "South Dinajpur",
-      city14: "Nadia",
-    },
+  const statesArr = [
+    "West Bengal",
+    "Manipur",
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
   ];
 
+  const inputStyle = {
+    borderWidth: 0.5,
+    borderColor: "#000",
+    marginTop: 7,
+    borderRadius: 5,
+    textAlign: "center",
+    paddingVertical: 5,
+    height: 40,
+  };
+
   return (
-    <View style={{ flex: 1, backgroundColor: "#F2F9FF" }}>
+    <ScrollView
+      style={{ flex: 1, backgroundColor: "#FBFBFB", paddingHorizontal: 15 }}
+    >
       <StatusBar backgroundColor="#F2F9FF" style="dark" />
-      <Text
-        style={{
-          marginTop: 130,
-          fontSize: 30,
-          marginLeft: 18,
-          fontWeight: "bold",
-        }}
-      >
+      <Text style={{ marginTop: 130, fontSize: 30, fontWeight: "bold" }}>
         Registration Here
       </Text>
 
-      <View style={{ marginTop: 20, marginLeft: 15 }}>
+      <View style={{ marginTop: 20 }}>
         <Text>Name</Text>
         <TextInput
-          style={{
-            borderWidth: 0.5,
-            borderColor: "#000",
-            marginLeft: -5,
-            marginRight: 10,
-            marginTop: 7,
-            borderRadius: 5,
-            textAlign: "center",
-          }}
+          style={inputStyle}
           keyboardType="default"
           placeholder="Please enter your name"
         />
       </View>
 
-      <View style={{ marginTop: 20, marginLeft: 19, flexDirection: "row" }}>
-        <Text style={{ marginRight: 150 }}>Email</Text>
-        <Text>Phone Number</Text>
-      </View>
-
-      <View style={{ marginTop: 2, marginHorizontal: 5, flexDirection: "row" }}>
+      <View style={{ marginTop: 20 }}>
+        <Text>Email</Text>
         <TextInput
-          style={{
-            borderWidth: 0.5,
-            borderColor: "#000",
-            marginLeft: 5,
-            marginRight: 10,
-            marginTop: 7,
-            borderRadius: 5,
-            textAlign: "center",
-            width: 165,
-          }}
+          style={inputStyle}
           keyboardType="email-address"
           placeholder="Please enter your email"
         />
+      </View>
+
+      <View style={{ marginTop: 20 }}>
+        <Text>Phone Number</Text>
         <TextInput
-          style={{
-            borderWidth: 0.5,
-            borderColor: "#000",
-            marginRight: 10,
-            marginTop: 7,
-            borderRadius: 5,
-            textAlign: "center",
-            width: 160,
-          }}
+          style={inputStyle}
           keyboardType="number-pad"
           placeholder="Phone"
         />
       </View>
 
-      <View style={{ marginTop: 20, marginLeft: 19, flexDirection: "row" }}>
-        <Text style={{ marginRight: 127 }}>Password</Text>
-        <Text>Confirm Password</Text>
-      </View>
-
-      <View style={{ flexDirection: "row", marginTop: 2, marginLeft: 10 }}>
-        {/* Password Field */}
+      <View style={{ marginTop: 20 }}>
+        <Text>Password</Text>
         <View style={{ position: "relative" }}>
           <TextInput
-            style={{
-              borderWidth: 0.5,
-              borderColor: "#000",
-              marginLeft: -1,
-              marginTop: 7,
-              borderRadius: 5,
-              textAlign: "center",
-              width: 165,
-              paddingRight: 30,
-            }}
+            style={{ ...inputStyle, paddingRight: 30 }}
             placeholder="Enter password"
             secureTextEntry={!passwordVisible}
           />
@@ -125,23 +99,16 @@ const Login = () => {
             onPress={() => setPasswordVisible(!passwordVisible)}
             size={15}
             color="gray"
-            style={{ position: "absolute", right: 10, top: 18 }}
+            style={{ position: "absolute", right: 10, top: 15 }}
           />
         </View>
+      </View>
 
-        {/* Confirm Password Field */}
-        <View style={{ position: "relative", marginLeft: 10 }}>
+      <View style={{ marginTop: 20 }}>
+        <Text>Confirm Password</Text>
+        <View style={{ position: "relative" }}>
           <TextInput
-            style={{
-              borderWidth: 0.5,
-              borderColor: "#000",
-              marginLeft: -1,
-              marginTop: 7,
-              borderRadius: 5,
-              textAlign: "center",
-              width: 165,
-              paddingRight: 30,
-            }}
+            style={{ ...inputStyle, paddingRight: 30 }}
             placeholder="Re-enter password"
             secureTextEntry={!confirmPasswordVisible}
           />
@@ -150,48 +117,48 @@ const Login = () => {
             onPress={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
             size={15}
             color="gray"
-            style={{ position: "absolute", right: 10, top: 18 }}
+            style={{ position: "absolute", right: 10, top: 15 }}
           />
         </View>
       </View>
 
-      <View style={{ marginLeft: 17, marginTop: 20, flexDirection: "row" }}>
-        <Text style={{ marginRight: 150 }}>State</Text>
-        <Text>City</Text>
-      </View>
-
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ marginTop: 20 }}>
+        <Text>State</Text>
         <View
           style={{
-            width: 165,
             borderWidth: 0.4,
             borderColor: "#000",
-            marginLeft: 10,
             marginTop: 7,
             borderRadius: 8,
           }}
         >
-          <Picker style={{ width: 170 }}>
-            <Picker.Item label="States" value="null" />
-            <Picker.Item label={statesArr[0]} value="west Bengal" />
-            <Picker.Item label={statesArr[1]} value="maharastra" />
+          <Picker style={{ width: "100%", height: 50 }}>
+            <Picker.Item label="Select State" value="null" />
+            {statesArr.map((state, index) => (
+              <Picker.Item
+                key={index}
+                label={state}
+                value={state.toLowerCase()}
+              />
+            ))}
           </Picker>
         </View>
+      </View>
 
+      <View style={{ marginTop: 20 }}>
+        <Text>City</Text>
         <View
           style={{
-            width: 165,
             borderWidth: 0.4,
             borderColor: "#000",
-            marginLeft: 10,
             marginTop: 7,
             borderRadius: 8,
           }}
         >
-          <Picker style={{ width: 170 }}>
-            <Picker.Item label="City" value="null" />
-            <Picker.Item label="" value="kolkata" />
-            <Picker.Item label="" value="mursidabad" />
+          <Picker style={{ width: "100%", height: 50 }}>
+            <Picker.Item label="Select City" value="null" />
+            <Picker.Item label="Kolkata" value="kolkata" />
+            <Picker.Item label="Mursidabad" value="mursidabad" />
             <Picker.Item label="Bardawan" value="bardawan" />
             <Picker.Item label="Darjiling" value="darjiling" />
             <Picker.Item label="Bankura" value="bankura" />
@@ -202,6 +169,7 @@ const Login = () => {
       </View>
 
       <Button />
+
       <Text
         style={{
           textAlign: "center",
@@ -222,13 +190,12 @@ const Login = () => {
           Login
         </Text>
       </Text>
+
       <Text
         style={{
           textAlign: "center",
           fontSize: 16,
           marginTop: 9,
-          marginLeft: 15,
-          marginRight: 15,
           fontWeight: "500",
         }}
       >
@@ -237,7 +204,7 @@ const Login = () => {
           Terms & Conditions and Privacy Policy
         </Text>
       </Text>
-    </View>
+    </ScrollView>
   );
 };
 
