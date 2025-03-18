@@ -11,15 +11,15 @@ import React, { useEffect, useState } from "react";
 const Index = ({ navigation }) => {
   const [activity, setActivity] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setActivity(false);
-      navigation.navigate("Home");
-    }, 3000);
-    setActivity(true);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setActivity(false);
+  //     navigation.navigate("Home");
+  //   }, 3000);
+  //   setActivity(true);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <View>

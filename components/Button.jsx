@@ -1,11 +1,12 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 
-const Button = () => {
+const Button = ({ onPress, title }) => {
   return (
     <View style={{ alignItems: "center" }}>
       <TouchableOpacity
-      activeOpacity={0.8}
+        onPress={onPress}
+        activeOpacity={0.8}
         style={{
           backgroundColor: "#10375C",
           height: 40,
@@ -17,7 +18,7 @@ const Button = () => {
         }}
       >
         <Text style={{ color: "#F4F6FF", fontSize: 17, fontWeight: "500" }}>
-          Register
+          {title}
         </Text>
       </TouchableOpacity>
     </View>
