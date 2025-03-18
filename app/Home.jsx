@@ -6,10 +6,14 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Courses from "../components/Courses";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
+  const [selectedItem, setSelectedItem] = useState();
+  const navigation = useNavigation();
+
   const courseArr = [
     "All Course",
     "Test Series",
@@ -18,21 +22,38 @@ const Home = () => {
     "Daily Quiz",
     "Downloads",
   ];
+
+  const imageArr = [
+    require("../assets/images/download.jpeg"),
+    require("../assets/images/download(2).jpeg"),
+    require("../assets/images/download(3).jpeg"),
+  ];
+
   return (
-    <View>
+    <View style={{ flex: 1, backgroundColor: "white" }}>
       <View style={{ backgroundColor: "#D6CFB4", height: 55, width: "100%" }}>
-        <StatusBar barStyle={"dark-content"} />
+        <StatusBar backgroundColor={"#D6CFB4"} barStyle={"dark-content"} />
       </View>
       <View>
-        <Image
-          source={require("../assets/images/download.jpeg")}
-          style={{
-            width: "85%",
-            height: 170,
-            marginTop: 20,
-            marginLeft: 27,
-            borderRadius: 20,
-          }}
+        <FlatList
+          data={imageArr}
+          horizontal
+          pagingEnabled
+          renderItem={({ item }) => (
+            <View>
+              <Image
+                source={item}
+                style={{
+                  width: 320,
+                  height: 170,
+                  marginTop: 20,
+                  borderRadius: 20,
+                  alignSelf: "center",
+                  marginHorizontal: 20,
+                }}
+              />
+            </View>
+          )}
         />
       </View>
       <View>
@@ -61,24 +82,34 @@ const Home = () => {
             style={{ marginTop: 15 }}
             data={courseArr}
             numColumns={2}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                activeOpacity={0.5}
-                style={{
-                  margin: 5,
-                  borderWidth: 0.3,
-                  borderColor: "#000",
-                  borderRadius: 5,
-                  height: 40,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 150,
-                  elevation: 1.5,
-                }}
-              >
-                <Text style={{ fontSize: 15, fontWeight: "600" }}>{item}</Text>
-              </TouchableOpacity>
-            )}
+            renderItem={({ item }) => {
+              const isSelectedItem = item === selectedItem;
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    setSelectedItem(item);
+                    navigation.navigate(item.replace(" ", ""));
+                  }}
+                  activeOpacity={0.5}
+                  style={{
+                    margin: 5,
+                    borderWidth: 0.3,
+                    borderColor: "#000",
+                    borderRadius: 5,
+                    height: 40,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 150,
+                    elevation: 1.5,
+                    backgroundColor: isSelectedItem ? "#D6CFB4" : "#fff",
+                  }}
+                >
+                  <Text style={{ fontSize: 15, fontWeight: "600" }}>
+                    {item}
+                  </Text>
+                </TouchableOpacity>
+              );
+            }}
           />
         </View>
       </View>

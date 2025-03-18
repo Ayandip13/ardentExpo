@@ -7,22 +7,16 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import { useNavigation } from "@react-navigation/native";
 
-const Index = ({ navigation }) => {
+const Index = () => {
   const [activity, setActivity] = useState(false);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setActivity(false);
-  //     navigation.navigate("Home");
-  //   }, 3000);
-  //   setActivity(true);
-
-  //   return () => clearTimeout(timer);
-  // }, []);
-
+  const navigation = useNavigation();
   return (
-    <View>
+    <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <StatusBar style="dark" />
       <View style={styles.container}>
         <View style={styles.header}>
           <Image
@@ -49,14 +43,16 @@ const Index = ({ navigation }) => {
           </View>
         </View>
         <View style={styles.footer}>
-          {/* <TouchableOpacity
+          <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate("Page2")}
+            onPress={() => navigation.navigate("DrawerNavigation")}
             activeOpacity={0.7}
           >
             <Text style={styles.buttonColor}>Get Started</Text>
-          </TouchableOpacity> */}
-          {activity && <ActivityIndicator size={30} style={{marginTop:20}} />}
+          </TouchableOpacity>
+          {activity && (
+            <ActivityIndicator size={30} style={{ marginTop: 20 }} />
+          )}
           <Text style={styles.loginText}>
             Already a User.{" "}
             <Text
